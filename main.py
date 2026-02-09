@@ -1,11 +1,11 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 
-from screens.login import LoginScreen
-from screens.league import LeagueScreen
-from screens.match import MatchScreen
-from screens.predict import PredictScreen
-from screens.profile import ProfileScreen
+from login import LoginScreen
+from league import LeagueScreen
+from match import MatchScreen
+from predict import PredictScreenw
+from profile import ProfileScreen
 
 
 class FootballApp(App):
