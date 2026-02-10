@@ -26,3 +26,8 @@ class LoginScreen(Screen):
         layout.add_widget(self.message)
 
         self.add_widget(layout)
+    def login(self, instance):
+        if self.username.text == "admin" and self.password.text == "1234":
+            self.manager.current = "league"
+        else:
+            self.message.text = "Invalid username or password"
