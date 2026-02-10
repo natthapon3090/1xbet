@@ -13,3 +13,9 @@ class LeagueScreen(Screen):
         layout.add_widget(Label(text="Select League", font_size=22))
 
         leagues = ["Premier League", "La Liga", "Bundesliga", "Thai League"]
+        for league in leagues:
+            btn = Button(text=league)
+            btn.bind(on_press=self.go_match)
+            layout.add_widget(btn)
+
+        self.add_widget(layout)
