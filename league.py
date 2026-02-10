@@ -19,3 +19,5 @@ class LeagueScreen(Screen):
             layout.add_widget(btn)
 
         self.add_widget(layout)
+    def go_match(self, instance):
+        self.manager.current = "match"
