@@ -16,3 +16,13 @@ class ProfileScreen(Screen):
 
         back_btn = Button(text="Back to League")
         back_btn.bind(on_press=self.back)
+ 
+        self.layout.add_widget(back_btn)
+        self.add_widget(self.layout)
+
+    def on_pre_enter(self):
+        score = getattr(self.manager, "user_score", 0)
+        self.score_label.text = f"Score earned: {score}"
+
+    def back(self, instance):
+        self.manager.current = "league"
