@@ -8,16 +8,17 @@ class LeagueScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        layout = BoxLayout(orientation="vertical", padding=20, spacing=15)
-
-        layout.add_widget(Label(text="Select League", font_size=22))
+        layout = BoxLayout(orientation="vertical", padding=30, spacing=20)
+        layout.add_widget(Label(text="🏆 Select League", font_size=24))
 
         leagues = ["Premier League", "La Liga", "Bundesliga", "Thai League"]
+
         for league in leagues:
             btn = Button(text=league)
             btn.bind(on_press=self.go_match)
             layout.add_widget(btn)
 
         self.add_widget(layout)
+
     def go_match(self, instance):
         self.manager.current = "match"
