@@ -3,31 +3,34 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
+from style import GREEN
 
 
 class LoginScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        layout = BoxLayout(orientation="vertical", padding=30, spacing=15)
-        layout.add_widget(Label(text="⚽ Football Predictor", font_size=24))
+        layout = BoxLayout(orientation="vertical", padding=40, spacing=20)
 
-        self.username = TextInput(hint_text="Username", multiline=False)
-        self.password = TextInput(hint_text="Password", password=True, multiline=False)
+        layout.add_widget(Label(text="🔥 BETTING PRO 2026 🔥", font_size=28))
 
-        login_btn = Button(text="Login")
-        login_btn.bind(on_press=self.login)
+        self.user = TextInput(hint_text="Username", multiline=False)
+        self.pw = TextInput(hint_text="Password", password=True, multiline=False)
 
-        self.message = Label(text="")
+        btn = Button(text="LOGIN", background_color=GREEN)
+        btn.bind(on_press=self.login)
 
-        layout.add_widget(self.username)
-        layout.add_widget(self.password)
-        layout.add_widget(login_btn)
-        layout.add_widget(self.message)
+        self.msg = Label(text="")
+
+        layout.add_widget(self.user)
+        layout.add_widget(self.pw)
+        layout.add_widget(btn)
+        layout.add_widget(self.msg)
 
         self.add_widget(layout)
+
     def login(self, instance):
-        if self.username.text == "admin" and self.password.text == "1234":
-            self.manager.current = "league"
+        if self.user.text == "admin" and self.pw.text == "1234":
+            self.manager.current = "dashboard"
         else:
-            self.message.text = "Invalid username or password"
+            self.msg.text = "❌ Wrong Username or Password"
