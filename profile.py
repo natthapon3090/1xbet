@@ -7,22 +7,18 @@ from kivy.uix.button import Button
 class ProfileScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.layout = BoxLayout(orientation="vertical", padding=20, spacing=15)
 
-        self.layout.add_widget(Label(text="User Profile", font_size=22))
+        self.layout = BoxLayout(orientation="vertical", padding=30, spacing=20)
 
-        self.score_label = Label(text="Score: 0")
-        self.layout.add_widget(self.score_label)
+        self.balance_label = Label(font_size=24)
 
-        back_btn = Button(text="Back to League")
-        back_btn.bind(on_press=self.back)
- 
-        self.layout.add_widget(back_btn)
+        btn = Button(text="⬅ Back to Dashboard")
+        btn.bind(on_press=lambda x: setattr(self.manager, "current", "dashboard"))
+
+        self.layout.add_widget(self.balance_label)
+        self.layout.add_widget(btn)
+
         self.add_widget(self.layout)
 
     def on_pre_enter(self):
-        score = getattr(self.manager, "user_score", 0)
-        self.score_label.text = f"Score earned: {score}"
-
-    def back(self, instance):
-        self.manager.current = "league"
+        self.balance_label.text = f"💰 Current Balance: {self.manager.balance}"
