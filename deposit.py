@@ -24,3 +24,8 @@ class DepositScreen(Screen):
         layout.add_widget(back)
 
         self.add_widget(layout)
+    def deposit(self, instance):
+        if self.input.text:
+            self.manager.balance += int(self.input.text)
+            self.manager.profit_history.append(self.manager.balance)
+            self.manager.current = "dashboard"
