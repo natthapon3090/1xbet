@@ -43,4 +43,29 @@ class HistoryScreen(Screen):
                     total_profit -= loss
                 except:
                     pass
+         win_rate = round((win_count / total_count) * 100, 2) if total_count > 0 else 0
 
+        # ===== แสดงสรุปด้านบน =====
+        summary_box = BoxLayout(
+            orientation="vertical",
+            size_hint_y=None,
+            height=120,
+            spacing=5
+        )
+
+        summary_box.add_widget(Label(
+            text=f"💰 Total Profit: {round(total_profit,2)}",
+            font_size=20
+        ))
+
+        summary_box.add_widget(Label(
+            text=f"📊 Win Rate: {win_rate}%",
+            font_size=18
+        ))
+
+        summary_box.add_widget(Label(
+            text=f"🧾 Total Bills: {total_count}",
+            font_size=16
+        ))
+
+        root.add_widget(summary_box)
