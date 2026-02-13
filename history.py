@@ -69,3 +69,23 @@ class HistoryScreen(Screen):
         ))
 
         root.add_widget(summary_box)
+        # ===== Scroll บิล =====
+        scroll = ScrollView()
+
+        content = BoxLayout(
+            orientation="vertical",
+            size_hint_y=None,
+            spacing=10
+        )
+        content.bind(minimum_height=content.setter('height'))
+
+        if not bills:
+            content.add_widget(Label(text="No betting history yet."))
+        else:
+            for bill in bills:
+
+                # แยก Single / Parlay
+                selections = bill.get("selections", [])
+                bet_type = "🏆 PARLAY" if len(selections) > 1 else "🎯 SINGLE"
+
+                result_text = bill.get("result", "")
