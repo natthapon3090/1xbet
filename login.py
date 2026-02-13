@@ -39,4 +39,4 @@ class LoginScreen(Screen):
         if self.user.text == "admin" and self.pw.text == "1234":
             self.manager.current = "dashboard"
         else:
-            self.msg.text = "❌ Wrong Username or Password"
+            self.msg.text = "❌ Access Denied"
