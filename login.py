@@ -3,16 +3,22 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-from style import GREEN
+from style import NEON_GREEN
 
 
 class LoginScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        layout = BoxLayout(orientation="vertical", padding=40, spacing=20)
+        layout = BoxLayout(orientation="vertical", padding=50, spacing=20)
 
-        layout.add_widget(Label(text="🔥 BETTING PRO 2026 🔥", font_size=28))
+        layout.add_widget(Label(text="⚡ BETTING SIM PRO ⚡", font_size=32))
+
+        self.user = TextInput(hint_text="Username", multiline=False)
+        self.pw = TextInput(hint_text="Password", password=True, multiline=False)
+
+        btn = Button(text="ENTER", background_color=NEON_GREEN)
+        btn.bind(on_press=self.login)
 
         self.user = TextInput(hint_text="Username", multiline=False)
         self.pw = TextInput(hint_text="Password", password=True, multiline=False)
