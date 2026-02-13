@@ -43,7 +43,7 @@ class HistoryScreen(Screen):
                     total_profit -= loss
                 except:
                     pass
-         win_rate = round((win_count / total_count) * 100, 2) if total_count > 0 else 0
+        win_rate = round((win_count / total_count) * 100, 2) if total_count > 0 else 0
 
         # ===== แสดงสรุปด้านบน =====
         summary_box = BoxLayout(
