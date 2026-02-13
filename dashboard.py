@@ -30,3 +30,15 @@ class DashboardScreen(Screen):
 
         btn4 = Button(text="📊 PROFIT GRAPH")
         btn4.bind(on_press=lambda x: setattr(self.manager, "current", "graph"))
+        
+        layout.add_widget(self.balance_label)
+        layout.add_widget(self.live_label)
+        layout.add_widget(btn1)
+        layout.add_widget(btn2)
+        layout.add_widget(btn3)
+        layout.add_widget(btn4)
+
+        self.add_widget(layout)
+
+    def blink(self, dt):
+        self.live_label.opacity = 1 if self.live_label.opacity == 0 else 0
