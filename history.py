@@ -89,3 +89,29 @@ class HistoryScreen(Screen):
                 bet_type = "🏆 PARLAY" if len(selections) > 1 else "🎯 SINGLE"
 
                 result_text = bill.get("result", "")
+                # สีตามผล
+                if "WIN" in result_text:
+                    result_color = (0, 1, 0, 1)  # เขียว
+                else:
+                    result_color = (1, 0, 0, 1)  # แดง
+
+                bill_box = BoxLayout(
+                    orientation="vertical",
+                    padding=10,
+                    spacing=5,
+                    size_hint_y=None,
+                    height=150
+                )
+
+                bill_box.add_widget(Label(
+                    text=f"{bet_type}",
+                    font_size=16
+                ))
+
+                for s in selections:
+                    match = s.get("match", "")
+                    team = s.get("team", "")
+                    odds = s.get("odds", "")
+                    bill_box.add_widget(
+                        Label(text=f"{match} | {team} @ {odds}")
+                    )
