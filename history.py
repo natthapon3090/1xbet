@@ -115,3 +115,32 @@ class HistoryScreen(Screen):
                     bill_box.add_widget(
                         Label(text=f"{match} | {team} @ {odds}")
                     )
+                 bill_box.add_widget(Label(
+                    text=f"Bet: {bill.get('bet','')}"
+                ))
+
+                bill_box.add_widget(Label(
+                    text=f"Total Odds: {bill.get('total_odds','')}"
+                ))
+
+                bill_box.add_widget(Label(
+                    text=result_text,
+                    color=result_color,
+                    font_size=16
+                ))
+
+                content.add_widget(bill_box)
+
+        scroll.add_widget(content)
+
+        back = Button(
+            text="⬅ Back to Dashboard",
+            size_hint_y=None,
+            height=50
+        )
+        back.bind(on_press=lambda x: setattr(self.manager, "current", "dashboard"))
+
+        root.add_widget(scroll)
+        root.add_widget(back)
+
+        self.add_widget(root)
