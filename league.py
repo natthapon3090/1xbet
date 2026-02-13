@@ -1,15 +1,16 @@
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.label import Label
 from kivy.uix.button import Button
+from kivy.uix.label import Label
 
 
 class LeagueScreen(Screen):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
 
-        layout = BoxLayout(orientation="vertical", padding=30, spacing=20)
-        layout.add_widget(Label(text="🏆 Select League", font_size=24))
+    def on_pre_enter(self):
+        self.clear_widgets()
+
+        layout = BoxLayout(orientation="vertical", padding=30, spacing=15)
+        layout.add_widget(Label(text="🏆 SELECT LEAGUE", font_size=26))
 
         leagues = ["Premier League", "La Liga", "Bundesliga", "Thai League"]
 
