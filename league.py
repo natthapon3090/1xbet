@@ -14,12 +14,17 @@ class LeagueScreen(Screen):
 
         leagues = ["Premier League", "La Liga", "Bundesliga", "Thai League"]
 
-        for league in leagues:
-            btn = Button(text=league)
-            btn.bind(on_press=self.go_match)
+        for l in leagues:
+            btn = Button(text=l)
+            btn.bind(on_press=self.select)
             layout.add_widget(btn)
+
+        back = Button(text="⬅ BACK")
+        back.bind(on_press=lambda x: setattr(self.manager, "current", "dashboard"))
+        layout.add_widget(back)
 
         self.add_widget(layout)
 
-    def go_match(self, instance):
+    def select(self, instance):
+        self.manager.selected_league = instance.text
         self.manager.current = "match"
