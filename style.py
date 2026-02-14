@@ -1,6 +1,7 @@
 from kivy.utils import get_color_from_hex
 
-BG_COLOR = get_color_from_hex("#121212")
+BG = get_color_from_hex("#0f0f0f")
 GOLD = get_color_from_hex("#FFD700")
-GREEN = (0, 0.6, 0, 1)
-RED = (0.8, 0, 0, 1)
+NEON_GREEN = get_color_from_hex("#00FF88")
+NEON_RED = get_color_from_hex("#FF0033")
+BLUE = get_color_from_hex("#00BFFF")
