@@ -79,8 +79,7 @@ class MatchScreen(Screen):
         layout.add_widget(back)
 
         self.add_widget(layout)
-
-    def select_match(self, home, away, team, odds):
+     def select_match(self, home, away, team, odds):
 
         selection = {
             "match": f"{home} vs {away}",
@@ -95,3 +94,4 @@ class MatchScreen(Screen):
         ]
 
         self.manager.selected_matches.append(selection)
+
