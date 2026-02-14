@@ -6,19 +6,23 @@ from dashboard import DashboardScreen
 from league import LeagueScreen
 from match import MatchScreen
 from predict import PredictScreen
-from profile import ProfileScreen
+from bill import BillScreen
 from history import HistoryScreen
+from profile import ProfileScreen
+from deposit import DepositScreen
+from graph import GraphScreen
 
 
 class FootballApp(App):
     def build(self):
         sm = ScreenManager()
 
-        # Global Data
-        sm.balance = 1000
-        sm.history = []
-        sm.selected_match = ""
-
+        sm.balance = 10000
+        sm.selected_league = ""
+        sm.selected_matches = []   # รองรับสเตป
+        sm.current_bill = {}
+        sm.bills = []
+        sm.profit_history = [10000]
         sm.add_widget(LoginScreen(name="login"))
         sm.add_widget(DashboardScreen(name="dashboard"))
         sm.add_widget(LeagueScreen(name="league"))
@@ -32,3 +36,4 @@ class FootballApp(App):
 
 if __name__ == "__main__":
     FootballApp().run()
+
