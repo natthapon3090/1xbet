@@ -69,3 +69,29 @@ class MatchScreen(Screen):
             match_box.add_widget(row)
             layout.add_widget(match_box)
 
+                next_btn = Button(text="➡ Confirm Selection")
+        next_btn.bind(on_press=lambda x: setattr(self.manager, "current", "predict"))
+
+        back = Button(text="⬅ Back")
+        back.bind(on_press=lambda x: setattr(self.manager, "current", "league"))
+
+        layout.add_widget(next_btn)
+        layout.add_widget(back)
+
+        self.add_widget(layout)
+
+    def select_match(self, home, away, team, odds):
+
+        selection = {
+            "match": f"{home} vs {away}",
+            "team": team,
+            "odds": odds
+        }
+
+        # ถ้าเลือกแมตช์เดิมใหม่ ให้แทนที่
+        self.manager.selected_matches = [
+            s for s in self.manager.selected_matches
+            if s["match"] != selection["match"]
+        ]
+
+        self.manager.selected_matches.append(selection)
