@@ -10,3 +10,4 @@ class Wallet:
             manager.balance -= amount
             return True
         return False
+    
