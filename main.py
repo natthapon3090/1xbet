@@ -23,17 +23,25 @@ class FootballApp(App):
         sm.current_bill = {}
         sm.bills = []
         sm.profit_history = [10000]
-        sm.add_widget(LoginScreen(name="login"))
-        sm.add_widget(DashboardScreen(name="dashboard"))
-        sm.add_widget(LeagueScreen(name="league"))
-        sm.add_widget(MatchScreen(name="match"))
-        sm.add_widget(PredictScreen(name="predict"))
-        sm.add_widget(ProfileScreen(name="profile"))
-        sm.add_widget(HistoryScreen(name="history"))
+        
+        screens = [
+            LoginScreen(name="login"),
+            DashboardScreen(name="dashboard"),
+            LeagueScreen(name="league"),
+            MatchScreen(name="match"),
+            PredictScreen(name="predict"),
+            BillScreen(name="bill"),
+            HistoryScreen(name="history"),
+            ProfileScreen(name="profile"),
+            DepositScreen(name="deposit"),
+            GraphScreen(name="graph"),
+        ]
+
+        for s in screens:
+            sm.add_widget(s)
 
         return sm
 
 
 if __name__ == "__main__":
     FootballApp().run()
-
