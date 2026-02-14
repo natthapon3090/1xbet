@@ -44,3 +44,37 @@ class PredictScreen(Screen):
             if bet > self.manager.balance:
                 result_label.text = "❌ Not enough balance"
                 return
+                        self.manager.balance -= bet
+
+            win = random.choice([True, False])
+
+            if win:
+                profit = round(bet * total_odds, 2)
+                self.manager.balance += profit
+                result = f"✅ WIN +{profit}"
+            else:
+                result = f"❌ LOSE -{bet}"
+
+            bill = {
+                "selections": self.manager.selected_matches.copy(),
+                "bet": bet,
+                "total_odds": round(total_odds, 2),
+                "result": result
+            }
+
+            self.manager.current_bill = bill
+            self.manager.bills.append(bill)
+            self.manager.profit_history.append(self.manager.balance)
+
+            self.manager.current = "bill"
+
+        btn = Button(text="🎯 Place Bet")
+        btn.bind(on_press=submit)
+
+        back = Button(text="⬅ Back")
+        back.bind(on_press=lambda x: setattr(self.manager, "current", "match"))
+
+        layout.add_widget(btn)
+        layout.add_widget(back)
+
+        self.add_widget(layout)
