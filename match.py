@@ -37,4 +37,35 @@ class MatchScreen(Screen):
                 ("Chiangrai", "Police Tero")
             ]
         }
-       
+        layout = BoxLayout(orientation="vertical", padding=15, spacing=8)
+
+        layout.add_widget(Label(text=f"{self.manager.selected_league}", font_size=22))
+
+        for home, away in matches[self.manager.selected_league]:
+
+            match_box = BoxLayout(orientation="vertical", spacing=5)
+
+            match_box.add_widget(Label(text=f"{home} vs {away}", font_size=18))
+
+            odds_home = round(random.uniform(1.5, 2.5), 2)
+            odds_draw = round(random.uniform(2.5, 3.5), 2)
+            odds_away = round(random.uniform(1.8, 3.0), 2)
+
+            row = BoxLayout(spacing=5)
+
+            btn_home = ToggleButton(text=f"{home}\n{odds_home}")
+            btn_draw = ToggleButton(text=f"Draw\n{odds_draw}")
+            btn_away = ToggleButton(text=f"{away}\n{odds_away}")
+
+            for btn, team, odds in [
+                (btn_home, home, odds_home),
+                (btn_draw, "Draw", odds_draw),
+                (btn_away, away, odds_away)
+            ]:
+                btn.bind(on_press=lambda inst, h=home, a=away, t=team, o=odds:
+                         self.select_match(h, a, t, o))
+                row.add_widget(btn)
+
+            match_box.add_widget(row)
+            layout.add_widget(match_box)
+
