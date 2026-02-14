@@ -11,5 +11,30 @@ class MatchScreen(Screen):
     def on_pre_enter(self):
         self.clear_widgets()
         self.manager.selected_matches = []
-
+        matches = {
+            "Premier League": [
+                ("Man City", "Arsenal"),
+                ("Liverpool", "Chelsea"),
+                ("Tottenham", "Newcastle"),
+                ("Aston Villa", "West Ham")
+            ],
+            "La Liga": [
+                ("Real Madrid", "Barcelona"),
+                ("Atletico", "Sevilla"),
+                ("Valencia", "Villarreal"),
+                ("Sociedad", "Betis")
+            ],
+            "Bundesliga": [
+                ("Bayern", "Dortmund"),
+                ("Leipzig", "Leverkusen"),
+                ("Frankfurt", "Stuttgart"),
+                ("Wolfsburg", "Bremen")
+            ],
+            "Thai League": [
+                ("Buriram", "BG Pathum"),
+                ("Port", "Chonburi"),
+                ("Muangthong", "Ratchaburi"),
+                ("Chiangrai", "Police Tero")
+            ]
+        }
        
